@@ -1,1 +1,1 @@
-# Elden Ring APP/API repo
+# Elden Ring API repo

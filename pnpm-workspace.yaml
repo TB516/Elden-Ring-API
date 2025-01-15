@@ -1,4 +1,0 @@
-packages:
-- 'app/client'
-- 'app/server'
-- 'api'
