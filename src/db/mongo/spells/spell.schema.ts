@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { ISpell } from '../../../models/Spells';
+import { ISpell } from '../../../models/spells';
 
 const spellSchema = new Schema<ISpell>(
   {

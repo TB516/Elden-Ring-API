@@ -1,8 +1,8 @@
-import { ValidationOutput } from '../ValidationOutput';
-import ISpell from './ISpell';
-import Data from '../Data';
+import { ValidationOutput } from '../validation-output';
+import ISpell from './spell.interface';
+import AbstractData from '../abstract-data.model';
 
-class Spell extends Data implements ISpell {
+class Spell extends AbstractData implements ISpell {
   protected m_image?: string;
 
   protected m_description: string;

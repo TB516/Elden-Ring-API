@@ -1,9 +1,8 @@
-import MongoRepository from '../MongoRepository';
-import { Spell } from '../../../models';
-import { ISpell, SpellQuery } from '../../../models/Spells';
-import ISpellQuery from '../../../models/Spells/ISpellQuery';
+import AbstractMongoRepository from './abstract-mongo.repository';
+import { Spell } from '../../models';
+import { ISpell, SpellQuery, ISpellQuery } from '../../models/spells';
 
-export default class SpellRepository extends MongoRepository<Spell, ISpell> {
+export default class SpellRepository extends AbstractMongoRepository<Spell, ISpell> {
   public async search(query: SpellQuery): Promise<Spell[]> {
     const mongoQuery = this.toIQuery(query);
 

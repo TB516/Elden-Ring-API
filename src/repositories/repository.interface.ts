@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import Data from '../models/Data';
-import Query from '../models/Query';
+import AbstractData from '../models/abstract-data.model';
+import AbstractQuery from '../models/query.model';
 
-interface IRepository<T extends Data> {
-  search(query: Query): Promise<T[]>;
+interface IRepository<T extends AbstractData> {
+  search(query: AbstractQuery): Promise<T[]>;
 
   findById(id: string): Promise<T | null>;
 

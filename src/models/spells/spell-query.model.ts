@@ -1,7 +1,7 @@
-import Query from '../Query';
-import ISpellQuery from './ISpellQuery';
+import AbstractQuery from '../query.model';
+import ISpellQuery from './spell-query.interface';
 
-class SpellQuery extends Query implements ISpellQuery {
+class SpellQuery extends AbstractQuery implements ISpellQuery {
   protected m_fp: RegExp | undefined;
 
   protected m_slot: number | undefined;

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import IErrorMessage from '../IErrorMessage';
+import IErrorMessage from '../error-message.interface';
 
 /**
  * Responds with a 405 status, and the entered message. Headers contain accepted methods.

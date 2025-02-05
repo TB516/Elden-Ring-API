@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import BaseController from './BaseController';
+import AbstractController from './abstract.controller';
 import { Spell, SpellQuery } from '../models';
 import * as clientErrors from '../utils/error/client';
 
-class SpellController extends BaseController<Spell> {
+class SpellController extends AbstractController<Spell> {
   public async getSingle(request: Request, response: Response): Promise<void> {
     const id = await this.m_repository.exists({ name: request.params.name } as Spell);
 

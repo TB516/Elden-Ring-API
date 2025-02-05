@@ -1,4 +1,4 @@
-import { Spell, SpellQuery } from './Spells';
+import { Spell, SpellQuery } from './spells';
 
 export {
   Spell,

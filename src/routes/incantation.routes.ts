@@ -1,8 +1,8 @@
 import { Request, Response, Router } from 'express';
 import { container } from 'tsyringe';
 import * as clientErrors from '../utils/error/client';
-import SpellController from '../controllers/SpellController';
-import hasAuth from '../middleware/hasAuth';
+import SpellController from '../controllers/spell.controller';
+import hasAuth from '../middleware/has-auth';
 
 const incantationRoutes = Router();
 

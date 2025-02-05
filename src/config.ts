@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import init from './config/mongoose';
-import SpellController from './controllers/SpellController';
+import SpellController from './controllers/spell.controller';
 
 const initServer = async () => {
   await init();

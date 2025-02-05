@@ -1,19 +1,19 @@
 /* eslint-disable no-unused-vars */
 import mongoose from 'mongoose';
-import IRepository from '../IRepository';
-import Data from '../../models/Data';
-import Query from '../../models/Query';
-import IData from '../../models/IData';
-import IQuery from '../../models/IQuery';
+import IRepository from '../repository.interface';
+import AbstractData from '../../models/abstract-data.model';
+import AbstractQuery from '../../models/query.model';
+import IData from '../../models/data.interface';
+import IQuery from '../../models/query.interface';
 
-abstract class MongoRepository<T extends Data, U extends IData> implements IRepository<T> {
+abstract class AbstractMongoRepository<T extends AbstractData, U extends IData> implements IRepository<T> {
   protected _model: mongoose.Model<U>;
 
   constructor(model: mongoose.Model<U>) {
     this._model = model;
   }
 
-  public abstract search(query: Query): Promise<T[]>;
+  public abstract search(query: AbstractQuery): Promise<T[]>;
 
   public async findById(id: string): Promise<T | null> {
     const mongoData = await this._model.findById(new mongoose.Types.ObjectId(id)).lean<U>().exec();
@@ -50,11 +50,11 @@ abstract class MongoRepository<T extends Data, U extends IData> implements IRepo
     return result ? this.toObjectT(result) : null;
   }
 
-  protected abstract toIQuery(query: Query): IQuery;
+  protected abstract toIQuery(query: AbstractQuery): IQuery;
 
   protected abstract toObjectU(data: T): U;
 
   protected abstract toObjectT(data: U): T;
 }
 
-export default MongoRepository;
+export default AbstractMongoRepository;

@@ -1,7 +1,7 @@
-import badRequestResponse from './badRequest';
-import resourceNotFoundResponse, { endpointNotFoundResponse } from './resourceNotFound';
-import methodNotAllowedResponse from './methodNotAllowed';
-import unsupportedTypeResponse, { postTypeUnsupportedResponse } from './unsuportedType';
+import badRequestResponse from './bad-request';
+import resourceNotFoundResponse, { endpointNotFoundResponse } from './resource-not-found';
+import methodNotAllowedResponse from './method-not-allowed';
+import unsupportedTypeResponse, { postTypeUnsupportedResponse } from './unsuported-type';
 import unauthorizedResponse from './unauthorized';
 
 export {

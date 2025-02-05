@@ -1,4 +1,4 @@
-import IData from '../IData';
+import IData from '../data.interface';
 
 interface ISpell extends IData {
   image: string | undefined,

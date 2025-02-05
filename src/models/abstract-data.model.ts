@@ -1,6 +1,6 @@
-import IData from './IData';
+import IData from './data.interface';
 
-abstract class Data implements IData {
+abstract class AbstractData implements IData {
   protected m_id: string | undefined;
 
   protected m_name: string;
@@ -23,4 +23,4 @@ abstract class Data implements IData {
   }
 }
 
-export default Data;
+export default AbstractData;

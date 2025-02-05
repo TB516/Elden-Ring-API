@@ -1,4 +1,4 @@
-import IQuery from '../IQuery';
+import IQuery from '../query.interface';
 
 interface ISpellQuery extends IQuery {
   fp: RegExp | undefined,

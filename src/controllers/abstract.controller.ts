@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Request, Response } from 'express';
-import Data from '../models/Data';
-import IRepository from '../repositories/IRepository';
+import AbstractData from '../models/abstract-data.model';
+import IRepository from '../repositories/repository.interface';
 
-abstract class BaseController<T extends Data> {
+abstract class AbstractController<T extends AbstractData> {
   protected m_repository: IRepository<T>;
 
   constructor(repository: IRepository<T>) {
@@ -23,4 +23,4 @@ abstract class BaseController<T extends Data> {
   protected abstract update(request: Request, response: Response, data: T): Promise<void>;
 }
 
-export default BaseController;
+export default AbstractController;

@@ -1,6 +1,6 @@
-import IQuery from './IQuery';
+import IQuery from './query.interface';
 
-abstract class Query implements IQuery {
+abstract class AbstractQuery implements IQuery {
   protected m_name: RegExp | undefined;
 
   constructor(name?: string) {
@@ -12,4 +12,4 @@ abstract class Query implements IQuery {
   }
 }
 
-export default Query;
+export default AbstractQuery;
