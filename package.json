@@ -10,7 +10,7 @@
     "build": "tsc",
     "build:image": "docker build . --file=Dockerfile.api --tag=registry.heroku.com/elden-ring-api/web --provenance=false",
     "lint": "eslint ./src . --ext .ts",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "keywords": [],
   "author": "",
