@@ -10,7 +10,7 @@
     "build": "tsc",
     "build:image": "docker build . --file=Dockerfile.api --tag=registry.heroku.com/elden-ring-api/web --provenance=false",
     "lint": "eslint ./src . --ext .ts",
-    "test": "pnpm run lint && echo \"Tests Complete!\""
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -19,13 +19,16 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.7.5",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.7",
+    "ts-jest": "^29.2.5",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   },
