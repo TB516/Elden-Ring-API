@@ -8,7 +8,7 @@
     "dev": "nodemon src/server.ts",
     "build": "tsc",
     "build:image": "docker build . --file=Dockerfile.api --tag=registry.heroku.com/elden-ring-api/web --provenance=false",
-    "lint": "eslint .",
+    "lint": "eslint ./src",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
