@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import IErrorMessage from '../error-message.interface';
+import { Request, Response } from "express";
+import type IErrorMessage from "../error-message.interface.js";
 
 /**
  * Responds with a 405 status, and the entered message. Headers contain accepted methods.
@@ -8,8 +8,13 @@ import IErrorMessage from '../error-message.interface';
  * @param message message to send
  * @param acceptedMethods valid request method
  */
-const methodNotAllowedResponse = (_request: Request, response: Response, message: IErrorMessage, acceptedMethods: string[]) => {
-  response.setHeader('allow', acceptedMethods.join(', '));
+const methodNotAllowedResponse = (
+  _request: Request,
+  response: Response,
+  message: IErrorMessage,
+  acceptedMethods: string[]
+) => {
+  response.setHeader("allow", acceptedMethods.join(", "));
   response.status(405).json(message);
 };
 

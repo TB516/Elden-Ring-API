@@ -1,5 +1,5 @@
 interface IQuery {
-  name: RegExp | undefined
+  name: RegExp | undefined;
 }
 
 export default IQuery;

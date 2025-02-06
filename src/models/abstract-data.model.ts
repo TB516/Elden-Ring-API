@@ -1,4 +1,4 @@
-import IData from './data.interface';
+import type IData from "./data.interface.js";
 
 abstract class AbstractData implements IData {
   protected m_id: string | undefined;
@@ -10,7 +10,7 @@ abstract class AbstractData implements IData {
     this.m_name = name;
   }
 
-  public get _id() : string | undefined {
+  public get _id(): string | undefined {
     return this.m_id;
   }
 
@@ -18,7 +18,7 @@ abstract class AbstractData implements IData {
     this.m_id = id;
   }
 
-  public get name() : string {
+  public get name(): string {
     return this.m_name;
   }
 }

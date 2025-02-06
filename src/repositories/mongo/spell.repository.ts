@@ -1,12 +1,20 @@
-import AbstractMongoRepository from './abstract-mongo.repository';
-import { Spell } from '../../models';
-import { ISpell, SpellQuery, ISpellQuery } from '../../models/spells';
+import AbstractMongoRepository from "./abstract-mongo.repository.js";
+import Spell from "../../models/spells/spell.model.js";
+import SpellQuery from "../../models/spells/spell-query.model.js";
+import type ISpell from "../../models/spells/spell.interface.js";
+import type ISpellQuery from "../../models/spells/spell-query.interface.js";
 
-export default class SpellRepository extends AbstractMongoRepository<Spell, ISpell> {
+export default class SpellRepository extends AbstractMongoRepository<
+  Spell,
+  ISpell
+> {
   public async search(query: SpellQuery): Promise<Spell[]> {
     const mongoQuery = this.toIQuery(query);
 
-    const mongoObjects = await this._model.find(mongoQuery).lean<ISpell[]>().exec();
+    const mongoObjects = await this._model
+      .find(mongoQuery)
+      .lean<ISpell[]>()
+      .exec();
 
     return mongoObjects.map((s) => this.toObjectT(s));
   }
@@ -59,7 +67,7 @@ export default class SpellRepository extends AbstractMongoRepository<Spell, ISpe
       data.arc,
       data.bonus,
       data.location,
-      data.stamina,
+      data.stamina
     );
   }
 }

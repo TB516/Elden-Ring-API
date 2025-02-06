@@ -1,8 +1,12 @@
-import badRequestResponse from './bad-request';
-import resourceNotFoundResponse, { endpointNotFoundResponse } from './resource-not-found';
-import methodNotAllowedResponse from './method-not-allowed';
-import unsupportedTypeResponse, { postTypeUnsupportedResponse } from './unsuported-type';
-import unauthorizedResponse from './unauthorized';
+import badRequestResponse from "./bad-request.js";
+import resourceNotFoundResponse, {
+  endpointNotFoundResponse,
+} from "./resource-not-found.js";
+import methodNotAllowedResponse from "./method-not-allowed.js";
+import unsupportedTypeResponse, {
+  postTypeUnsupportedResponse,
+} from "./unsuported-type.js";
+import unauthorizedResponse from "./unauthorized.js";
 
 export {
   badRequestResponse,

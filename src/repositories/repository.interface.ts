@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
-import AbstractData from '../models/abstract-data.model';
-import AbstractQuery from '../models/query.model';
+ 
+import AbstractData from "../models/abstract-data.model.js";
+import AbstractQuery from "../models/query.model.js";
 
 interface IRepository<T extends AbstractData> {
   search(query: AbstractQuery): Promise<T[]>;

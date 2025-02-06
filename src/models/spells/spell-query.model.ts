@@ -1,5 +1,5 @@
-import AbstractQuery from '../query.model';
-import ISpellQuery from './spell-query.interface';
+import AbstractQuery from "../query.model.js";
+import type ISpellQuery from "./spell-query.interface.js";
 
 class SpellQuery extends AbstractQuery implements ISpellQuery {
   protected m_fp: RegExp | undefined;
@@ -8,7 +8,7 @@ class SpellQuery extends AbstractQuery implements ISpellQuery {
 
   constructor(name?: string, fp?: string, slot?: number) {
     super(name);
-    this.m_fp = fp ? new RegExp(fp, 'i') : undefined;
+    this.m_fp = fp ? new RegExp(fp, "i") : undefined;
     this.m_slot = slot;
   }
 

@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import IErrorMessage from '../error-message.interface';
+import { Request, Response } from "express";
+import type IErrorMessage from "../error-message.interface.js";
 
 /**
  * Responds with a 404 resource not found status.
@@ -7,7 +7,11 @@ import IErrorMessage from '../error-message.interface';
  * @param response response object
  * @param message message to send
  */
-const resourceNotFoundResponse = (_request: Request, response: Response, message: IErrorMessage) => {
+const resourceNotFoundResponse = (
+  _request: Request,
+  response: Response,
+  message: IErrorMessage
+) => {
   response.status(404).json(message);
 };
 
@@ -19,7 +23,7 @@ const resourceNotFoundResponse = (_request: Request, response: Response, message
  */
 const endpointNotFoundResponse = (request: Request, response: Response) => {
   return resourceNotFoundResponse(request, response, {
-    id: 'endpointNotFound',
+    id: "endpointNotFound",
     message: `The requested endpoint of ${request.url} was not found.`,
   } as IErrorMessage);
 };

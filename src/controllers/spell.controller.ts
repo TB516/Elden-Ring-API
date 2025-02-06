@@ -1,15 +1,18 @@
-import { Request, Response } from 'express';
-import AbstractController from './abstract.controller';
-import { Spell, SpellQuery } from '../models';
-import * as clientErrors from '../utils/error/client';
+import { Request, Response } from "express";
+import AbstractController from "./abstract.controller.js";
+import Spell from "../models/spells/spell.model.js";
+import SpellQuery from "../models/spells/spell-query.model.js";
+import * as clientErrors from "../utils/error/client/index.js";
 
 class SpellController extends AbstractController<Spell> {
   public async getSingle(request: Request, response: Response): Promise<void> {
-    const id = await this.m_repository.exists({ name: request.params.name } as Spell);
+    const id = await this.m_repository.exists({
+      name: request.params.name,
+    } as Spell);
 
     if (!id) {
       clientErrors.resourceNotFoundResponse(request, response, {
-        id: 'resourceNotFound',
+        id: "resourceNotFound",
         message: `'${request.params.name}' was not found.`,
       });
       return;
@@ -24,7 +27,10 @@ class SpellController extends AbstractController<Spell> {
     const spellQuery = this.createQuery(request);
 
     if (Number.isNaN(spellQuery.slot)) {
-      clientErrors.badRequestResponse(request, response, { id: 'invalidParam', message: 'Slots and Cost must be numeric values.' });
+      clientErrors.badRequestResponse(request, response, {
+        id: "invalidParam",
+        message: "Slots and Cost must be numeric values.",
+      });
       return;
     }
 
@@ -32,7 +38,10 @@ class SpellController extends AbstractController<Spell> {
   }
 
   public async post(request: Request, response: Response): Promise<void> {
-    if (request.headers['content-type'] !== 'application/json' && request.headers['content-type'] !== 'application/x-www-form-urlencoded') {
+    if (
+      request.headers["content-type"] !== "application/json" &&
+      request.headers["content-type"] !== "application/x-www-form-urlencoded"
+    ) {
       clientErrors.postTypeUnsupportedResponse(request, response);
     }
 
@@ -40,7 +49,10 @@ class SpellController extends AbstractController<Spell> {
     const validationResults = spell.validate();
 
     if (Object.keys(validationResults).length > 0) {
-      clientErrors.badRequestResponse(request, response, { id: 'badRequest', message: JSON.stringify(validationResults) });
+      clientErrors.badRequestResponse(request, response, {
+        id: "badRequest",
+        message: JSON.stringify(validationResults),
+      });
       return;
     }
 
@@ -56,11 +68,13 @@ class SpellController extends AbstractController<Spell> {
   }
 
   public async delete(request: Request, response: Response): Promise<void> {
-    const id = await this.m_repository.exists({ name: request.params.name } as Spell);
+    const id = await this.m_repository.exists({
+      name: request.params.name,
+    } as Spell);
 
     if (!id) {
       clientErrors.resourceNotFoundResponse(request, response, {
-        id: 'resourceNotFound',
+        id: "resourceNotFound",
         message: `'${request.params.name}' was not found.`,
       });
       return;
@@ -71,12 +85,20 @@ class SpellController extends AbstractController<Spell> {
     response.status(204).send();
   }
 
-  protected async add(request: Request, response: Response, data: Spell): Promise<void> {
+  protected async add(
+    request: Request,
+    response: Response,
+    data: Spell
+  ): Promise<void> {
     const spell = await this.m_repository.create(data);
     response.status(201).json(spell);
   }
 
-  protected async update(request: Request, response: Response, data: Spell): Promise<void> {
+  protected async update(
+    request: Request,
+    response: Response,
+    data: Spell
+  ): Promise<void> {
     await this.m_repository.updateById(data._id!, data);
 
     response.status(204).send();
@@ -98,11 +120,11 @@ class SpellController extends AbstractController<Spell> {
       data.arc,
       data.bonus,
       data.location,
-      data.stamina,
+      data.stamina
     );
   }
 
-  protected createQuery(request: Request) : SpellQuery {
+  protected createQuery(request: Request): SpellQuery {
     const queryParams = request.query;
     let spellName: string | undefined;
     let spellFp: string | undefined;

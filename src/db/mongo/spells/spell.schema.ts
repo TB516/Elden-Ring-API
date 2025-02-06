@@ -1,5 +1,5 @@
-import { Schema } from 'mongoose';
-import { ISpell } from '../../../models/spells';
+import { Schema } from "mongoose";
+import type ISpell from "../../../models/spells/spell.interface.js";
 
 const spellSchema = new Schema<ISpell>(
   {
@@ -55,7 +55,7 @@ const spellSchema = new Schema<ISpell>(
   },
   {
     versionKey: false,
-  },
+  }
 );
 
 export default spellSchema;

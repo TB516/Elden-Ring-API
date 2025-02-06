@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import IErrorMessage from '../error-message.interface';
+import { Request, Response } from "express";
+import type IErrorMessage from "../error-message.interface.js";
 
 /**
  * Responds with a 415 unsupported media type status and the entered message
@@ -8,8 +8,13 @@ import IErrorMessage from '../error-message.interface';
  * @param message message to send
  * @param acceptedTypes content types the point accepts
  */
-const unsupportedTypeResponse = (_request: Request, response: Response, message: IErrorMessage, acceptedTypes: string[]) => {
-  response.setHeader('accept-encoding', acceptedTypes);
+const unsupportedTypeResponse = (
+  _request: Request,
+  response: Response,
+  message: IErrorMessage,
+  acceptedTypes: string[]
+) => {
+  response.setHeader("accept-encoding", acceptedTypes);
   response.status(415).json(message);
 };
 
@@ -24,13 +29,10 @@ const postTypeUnsupportedResponse = (_request: Request, response: Response) => {
     _request,
     response,
     {
-      id: 'unsupportedMediaType',
-      message: 'The post request body was in a unsupported media format.',
+      id: "unsupportedMediaType",
+      message: "The post request body was in a unsupported media format.",
     } as IErrorMessage,
-    [
-      'application/json',
-      'application/x-www-form-urlencoded',
-    ],
+    ["application/json", "application/x-www-form-urlencoded"]
   );
 };
 

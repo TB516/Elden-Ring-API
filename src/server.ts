@@ -1,12 +1,11 @@
-import 'reflect-metadata';
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-import compression from 'compression';
-import initServer from './config';
-import configureApp from './app';
-
-require('dotenv').config();
+import "reflect-metadata";
+import express from "express";
+import helmet from "helmet";
+import cors from "cors";
+import compression from "compression";
+import initServer from "./config.js";
+import configureApp from "./app.js";
+import "dotenv/config";
 
 initServer().then(() => {
   const app = express();

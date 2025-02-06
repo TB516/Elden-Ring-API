@@ -1,6 +1,6 @@
-import { ValidationOutput } from '../validation-output';
-import ISpell from './spell.interface';
-import AbstractData from '../abstract-data.model';
+import AbstractData from "../abstract-data.model.js";
+import { type ValidationOutput } from "../validation-output.js";
+import type ISpell from "./spell.interface.js";
 
 class Spell extends AbstractData implements ISpell {
   protected m_image?: string;
@@ -38,7 +38,7 @@ class Spell extends AbstractData implements ISpell {
     arc: number,
     bonus: string | undefined,
     location: string | undefined,
-    stamina: number,
+    stamina: number
   ) {
     super(id, name);
     this.m_image = image;
@@ -101,32 +101,33 @@ class Spell extends AbstractData implements ISpell {
   public validate(): ValidationOutput {
     const errors = {} as Record<string, string>;
 
-    if (!this.m_name || !(/^[a-zA-Z ]*$/.test(this.m_name))) {
-      errors.name = 'Name must be defined and only contain letters and numbers.';
+    if (!this.m_name || !/^[a-zA-Z ]*$/.test(this.m_name)) {
+      errors.name =
+        "Name must be defined and only contain letters and numbers.";
     }
     if (!this.m_description) {
-      errors.description = 'A description must be provided!';
+      errors.description = "A description must be provided!";
     }
     if (!this.m_effect) {
-      errors.effect = 'A effect must be provided!';
+      errors.effect = "A effect must be provided!";
     }
     if (!this.m_fp) {
-      errors.fp = 'A fp cost must be provided!';
+      errors.fp = "A fp cost must be provided!";
     }
     if (Number.isNaN(this.m_slot)) {
-      errors.slot = 'A slot count must be provided as a integer!';
+      errors.slot = "A slot count must be provided as a integer!";
     }
     if (Number.isNaN(this.m_int)) {
-      errors.int = 'An int requirement must be provided as a integer!';
+      errors.int = "An int requirement must be provided as a integer!";
     }
     if (Number.isNaN(this.m_faith)) {
-      errors.faith = 'A faith requirement must be provided as a integer!';
+      errors.faith = "A faith requirement must be provided as a integer!";
     }
     if (Number.isNaN(this.m_arc)) {
-      errors.arc = 'An arcane requirement must be provided as a integer!';
+      errors.arc = "An arcane requirement must be provided as a integer!";
     }
     if (Number.isNaN(this.m_stamina)) {
-      errors.arc = 'An stamina usage amount must be provided as a integer!';
+      errors.arc = "An stamina usage amount must be provided as a integer!";
     }
 
     return errors;
