@@ -4,14 +4,14 @@ name: Deploy Server to heroku
 # Run workflow on every push to master branch.
 on:
   workflow_run:
-    workflows: ['Node.js CI']
+    workflows: ["Node.js CI"]
     types: [completed]
     branches:
-        - 'main'
+      - "main"
 
 # Your workflows jobs.
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: heroku-deployment
@@ -28,9 +28,9 @@ jobs:
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
-          
+
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          
+
           # Name of the heroku application to which the build is to be sent.
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
 
