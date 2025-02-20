@@ -7,19 +7,19 @@ import initServer from "./config.js";
 import configureApp from "./app.js";
 import "dotenv/config";
 
-initServer().then(() => {
-  const app = express();
-  const port = process.env.PORT || process.env.NODE_PORT || 3000;
+await initServer();
 
-  app.use(helmet());
-  app.use(cors());
-  app.use(compression());
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+const app = express();
+const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-  configureApp(app);
+app.use(helmet());
+app.use(cors());
+app.use(compression());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-  app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
+configureApp(app);
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
